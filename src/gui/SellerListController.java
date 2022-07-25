@@ -30,6 +30,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.entities.Department;
 import model.entities.Sellers;
 import model.services.DepartmentService;
 import model.services.SellerService;
@@ -50,6 +51,8 @@ public class SellerListController implements Initializable, DataChangeListener {
 	private TableColumn<Sellers, Date> tableColumnBirthDate;
 	@FXML
 	private TableColumn<Sellers, Double> tableColumnBaseSalary;
+	@FXML
+	private TableColumn<Sellers, Department> tableColumnDepartment;
 	@FXML
 	private TableColumn<Sellers, Sellers> tableColumnEDIT;
 	@FXML
@@ -84,6 +87,8 @@ public class SellerListController implements Initializable, DataChangeListener {
 		Utils.formatTableColumnDate(tableColumnBirthDate, "dd/MM/yyyy");
 		tableColumnBaseSalary.setCellValueFactory(new PropertyValueFactory<>("baseSalary"));
 		Utils.formatTableColumnDouble(tableColumnBaseSalary, 2);
+		tableColumnDepartment.setCellValueFactory(new PropertyValueFactory<>("department"));
+		
 
 		Stage stage = (Stage) Main.getMainScene().getWindow();
 		tableViewSellers.prefHeightProperty().bind(stage.heightProperty());
